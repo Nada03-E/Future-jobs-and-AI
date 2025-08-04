@@ -25,4 +25,4 @@ EVALUATION_TABLE = "grid_search_results"
 LOGGING_LEVEL = "INFO"
 
 #save the model
-MODELS_PATH = os.path.join(BASE_DIR,"..", "models/")
+MODELS_PATH = os.path.join(BASE_DIR,"..", "models")

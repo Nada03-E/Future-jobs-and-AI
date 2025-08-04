@@ -1,0 +1,12 @@
+Job Title
+Industry
+Job Status
+AI Impact Level
+Required Education
+Experience Required (Years)
+Job Openings (2024)
+Projected Openings (2030)
+Remote Work Ratio (%)
+Automation Risk (%)
+Location
+Gender Diversity (%)
