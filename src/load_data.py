@@ -10,7 +10,7 @@ import logging
 
 
 
-def load_data_prova():
+def load_data():
 
     logging.info('Apertuira file cvs...')
     path = os.path.join(config.RAW_DATA_PATH, "ai_job_trends_dataset.csv")

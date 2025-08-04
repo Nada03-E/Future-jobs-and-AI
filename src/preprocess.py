@@ -2,9 +2,10 @@ import os
 import sys
 import pandas as pd
 import sqlite3
-
+import numpy as np
 sys.path.append(os.path.abspath('..'))
 from src import config
+from sklearn.model_selection import train_test_split
 
 def preprocess_data():
     # Connessione al database
@@ -23,3 +24,7 @@ def preprocess_data():
     conn.close()
 
     print(f"Dati preprocessati salvati nella tabella {config.PROCESSED_TABLE}.")
+
+
+
+

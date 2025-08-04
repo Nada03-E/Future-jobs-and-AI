@@ -12,14 +12,43 @@ import pickle
 sys.path.append(os.path.abspath('..'))
 from src import config
 import logging
-
+from src import preprocess 
 
 def load_data():
     conn = sqlite3.connect(config.DATABASE_PATH)
     query = f"SELECT * FROM {config.PROCESSED_TABLE}"
     df = pd.read_sql_query(query, conn)
     conn.close()
-    return df
+    return df  
+
+
+
+def carica_dati_training_validation(target_col: str):
+    """
+    Legge i CSV salvati dopo lo split e restituisce:
+    X_train, X_val, y_train, y_val
+    """
+    train_path = os.path.join(config.RAW_DATA_PATH, "dati_training.csv")
+    val_path = os.path.join(config.RAW_DATA_PATH, "dati_validation.csv")
+
+    df_train = pd.read_csv(train_path)
+    df_val = pd.read_csv(val_path)
+
+    X_train = df_train.drop(columns=[target_col])
+    y_train = df_train[target_col]
+
+    X_val = df_val.drop(columns=[target_col])
+    y_val = df_val[target_col]
+
+    return X_train, X_val, y_train, y_val
+
+# --- Esempio d'uso ---
+TARGET_COL = "nome_colonna_target"  # Cambia con il nome reale della tua variabile target
+
+X_train, X_val, y_train, y_val = carica_dati_training_validation(TARGET_COL)
+
+
+
 
 
 def train_model():
