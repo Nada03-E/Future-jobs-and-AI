@@ -2,15 +2,20 @@ import sqlite3
 import pandas as pd
 import sys
 import os
-#sys.path.append(os.path.abspath('..'))  
+import importlib
 from src import config
 
 import logging
 # Set up logging
 
-def load_data():
+
+
+def load_data_prova():
+
     logging.info('Apertuira file cvs...')
     path = os.path.join(config.RAW_DATA_PATH, "ai_job_trends_dataset.csv")
+
+    print("PATH CSV:", os.path.join(config.RAW_DATA_PATH, "ai_job_trends_dataset.csv"))
 
     df = pd.read_csv(path, sep=',')
    
