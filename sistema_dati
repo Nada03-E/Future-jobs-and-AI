@@ -1,0 +1,27 @@
+
+import pandas as pd
+import sqlite3
+
+# Carica il CSV
+df = pd.read_csv("data/ai_job_trends_dataset.csv", sep=',')
+
+# Crea (o sovrascrive) un database SQLite
+conn = sqlite3.connect("database/ai_jobs.db")
+
+# Esporta il DataFrame in una tabella chiamata "jobs"
+df.to_sql("jobs", conn, if_exists="replace", index=False)
+
+print("✅ Database creato con successo!")
+
+# Chiude la connessione
+conn.close()
+
+# Connessione al database
+conn = sqlite3.connect("database/ai_jobs.db")
+
+# Esegui una query SQL
+df = pd.read_sql_query("SELECT * FROM jobs LIMIT 5;", conn)
+
+print(df)
+
+conn.close()
