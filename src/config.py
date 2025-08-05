@@ -8,7 +8,9 @@ RAW_DATA_PATH = os.path.abspath(os.path.join(BASE_DIR, "..", "data"))
 
 # SQLite Database Path
 DATABASE_PATH = os.path.join(BASE_DIR,"..", "database/ai_jobs.db")
-
+DATABASE_PATH_training = os.path.join(BASE_DIR,"..", "database/ai_jobs_training.db")
+DATABASE_PATH_validation = os.path.join(BASE_DIR,"..", "database/ai_jobs_validation.db")
+DATABASE_PATH_MS = os.path.join(BASE_DIR,"..", "database/ai_jobs_MS.db")
 # Preprocessed Data Table Name
 PROCESSED_TABLE = "Dati_Processati"
 

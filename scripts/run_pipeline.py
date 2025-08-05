@@ -6,7 +6,7 @@ import logging
 from src import config
 from src.load_data import load_data
 
-from src.make_model import train_model
+from src.make_model import train_model_neural_network
 
 
 #creare la pagina di log per vedere i passaggi.
@@ -15,14 +15,14 @@ logging.basicConfig(filename='../logs/pipeline.log', level=logging.INFO, format=
 
 def main():
     logging.info("Inizio elaborazione Valutazione Prezzo case...")
-
+    """
     # Caricare il file excell
     logging.info("Caricare i dati iniziali...")
     load_data()
-
+    """
     # Creazione del modelo Migliore
     logging.info("Eseguire il preprocessing e Fare il training del modello...")
-    train_model()
+    train_model_neural_network()
 
 
 if __name__ == "__main__":
