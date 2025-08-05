@@ -51,6 +51,28 @@ def load_data_MS():
 
 """
 
+def carica_dati_training_validation_MS(target_col: str):
+    """
+    Legge i file CSV salvati dopo lo split e restituisce:
+    X_train, X_val, y_train, y_val.
+
+    Si aspetta che i file `dati_training.csv` e `dati_validation.csv`
+    si trovino nel percorso configurato in `config.RAW_DATA_PATH`.
+    """
+    train_path = os.path.join(config.RAW_DATA_PATH, "training_MS.csv")
+    val_path = os.path.join(config.RAW_DATA_PATH, "validation_MS.csv")
+
+    df_train = pd.read_csv(train_path)
+    df_val = pd.read_csv(val_path)
+
+    X_train = df_train.drop(columns=[target_col])
+    y_train = df_train[target_col]
+
+    X_val = df_val.drop(columns=[target_col])
+    y_val = df_val[target_col]
+
+    return X_train, X_val, y_train, y_val
+
 def carica_dati_training_validation(target_col: str):
     """
     Legge i file CSV salvati dopo lo split e restituisce:
@@ -72,8 +94,6 @@ def carica_dati_training_validation(target_col: str):
     y_val = df_val[target_col]
 
     return X_train, X_val, y_train, y_val
-
-
 
 """# --- Esempio d'uso ---
 TARGET_COL = "Median Salary (USD)"  # Cambia con il nome reale della tua variabile target
@@ -151,7 +171,7 @@ def train_model_neural_network():
     """
     logging.info("Caricamento dei dati di training e validation…")
     target_col = "Median Salary (USD)"  # Sostituisci con il nome corretto della tua variabile target
-    X_train, X_val, y_train, y_val = carica_dati_training_validation(target_col)
+    X_train, X_val, y_train, y_val = carica_dati_training_validation_MS(target_col)
 
     # Applica encoding e scaling delle feature
     # Questo utilizza le funzioni definite in `src.preprocess` per riutilizzare
