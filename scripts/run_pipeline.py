@@ -23,6 +23,11 @@ def main():
     # Creazione del modelo Migliore
     logging.info("Eseguire il preprocessing e Fare il training del modello...")
     train_model_neural_network()
+    """
+    2025-08-05 13:47:57,775 - INFO - MAE train: 0.2430
+    2025-08-05 13:47:57,775 - INFO - MAE validation: 0.2496
+    2025-08-05 13:47:57,775 - INFO - Differenza MAE (overfitting check): 0.0066
+    """
 
 
 if __name__ == "__main__":

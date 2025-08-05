@@ -182,12 +182,23 @@ def train_model_neural_network():
     y_train_processed, y_val_processed, target_scaler = preprocess.scale_target(y_train, y_val)
 
     # Definisci e allena il modello di rete neurale
-    model = MLPRegressor(
-        hidden_layer_sizes=(64, 32),
+    """model = MLPRegressor(
+        hidden_layer_sizes=(32, 16),
+        alpha=0.001,  # penalità L2
         activation='relu',
         random_state=42,
-        max_iter=300
-    )
+        max_iter=500
+    ) MAE=0.2466"""
+    model = MLPRegressor(
+        hidden_layer_sizes=(32, 16),
+        alpha=0.001,
+        activation='relu',
+        random_state=42,
+        max_iter=500,
+        early_stopping=True,
+        validation_fraction=0.1
+    ) # MAE=0.0066
+
 
     model.fit(X_train_processed, y_train_processed)
 
